@@ -1,2 +1,1 @@
 # ✅ uptime-kuma-configs
-
