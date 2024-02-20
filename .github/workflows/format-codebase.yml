@@ -20,25 +20,7 @@ jobs:
       - name: 💄 Run Prettier
         uses: creyD/prettier_action@v4.3
         with:
-          prettier_options: --write **/*.{js,md,yml,sh,html,css}
-          prettier_plugins: "prettier-plugin-sh"
+          prettier_options: --write **/*.{js,md,yml,html,css}
           commit_message: "chore(codebase): format with prettier"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: 🐍 Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-
-      - name: 🖤 Format code with black
-        run: |
-          git config --global user.email "hello@harryvasanth.com"
-          git config --global user.name "HarryVasanth"
-          pip install black
-          black . --verbose
-          git add .
-
-      - name: 📎 Push changes
-        run: |
-          git diff-index --quiet HEAD || git commit -m "chore(codebase): format with black" && git push || echo "No changes" && exit
